@@ -1,14 +1,19 @@
+import os
+
 import numpy as np
 import pandas as pd
 
 # Установка опции для отображения всех столбцов без ограничения
 pd.set_option('display.max_columns', None)
 
+directory = os.getcwd()
+
 # Путь к файлу с данными
-file = r'C:\Users\Gurki\PycharmProjects\tz_Suppi\trial_task.json'
+file = 'trial_task.json'
+file_path = os.path.join(directory, file)
 
 # Чтение данных из файла JSON в таблицу данных data_table
-data_table = pd.read_json(file, lines=True)
+data_table = pd.read_json(file_path, lines=True)
 
 # Вычисление общего количества товаров для каждой записи и добавление столбца all_quantity
 data_table['all_quantity'] = data_table['products'].apply(lambda x: sum(item['quantity'] for item in x))

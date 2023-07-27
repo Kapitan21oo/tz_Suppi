@@ -15,7 +15,7 @@ file_path = os.path.join(directory, file)
 # Чтение данных из файла JSON в таблицу данных data_table
 data_table = pd.read_json(file_path, lines=True)
 
-# Вычисление общего количества товаров для каждой записи и добавление столбца all_quantity
+# Вычисление общего количества товаров для каждой gзаписи и добавление столбца all_quantity
 data_table['all_quantity'] = data_table['products'].apply(lambda x: sum(item['quantity'] for item in x))
 
 # Вычисление стоимости доставки tariff для каждой записи и добавление столбца tariff
